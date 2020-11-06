@@ -1,0 +1,50 @@
+.paper {
+  padding-top: 15%;
+  display: "flex";
+  flex-direction: "column";
+  align-items: "center";
+}
+.avatar {
+  margin: 1px;
+}
+.form {
+  width: "100%";
+  margin-top: 1px;
+}
+.submit {
+  margin: 3px 0 2px;
+}
+.MuiTypography-alignCenter {
+  text-align: center;
+  padding-top: 25vh !important;
+}
+
+.MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+  border-color: #55c8d0 !important;
+}
+.MuiFormLabel-root.Mui-focused {
+  color: #55c8d0 !important;
+}
+.MuiButton-containedPrimary {
+  color: #fff;
+  background-color: #55c8d0 !important;
+}
+.MuiTypography-colorPrimary {
+  color: #65666f !important;
+}
+.main-bg {
+  background: url(../../assets/bg2.jpg) no-repeat center;
+  background-size: cover;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  -ms-background-size: cover;
+  min-height: 100vh;
+}
+.MuiTypography-colorTextSecondary {
+  color: #fafafa !important;
+}
+.logo {
+  text-align: center;
+  padding-top: 3rem;
+}

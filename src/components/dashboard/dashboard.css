@@ -1,0 +1,31 @@
+.paper{
+    padding: 25px;
+    color: #fff;
+    text-align: start;
+    border-left: 5px  solid #55c8d0!important;
+  }
+  .paper1{
+    padding: 25px;
+    color: #fff;
+    text-align: start;
+    border-left: 5px  solid #45bb53 !important;
+  }
+  .paper2{
+    padding: 25px;
+    color: #fff;
+    text-align: start;
+    border-left: 5px  solid #315fb3 !important;
+  }
+  .paper3{
+    padding: 25px;
+    color: #fff;
+    text-align: start;
+    border-left: 5px  solid #b33179!important;
+  }
+
+  .makeStyles-paper-11 {
+    color: rgba(0, 0, 0, 0.54);
+    padding: 16px;
+    text-align: initial !important;
+    margin-top: 3rem !important;
+}
