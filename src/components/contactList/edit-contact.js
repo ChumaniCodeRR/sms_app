@@ -4,8 +4,6 @@ import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 import Navbar from '../../layout/navbar';
 import FooterPage from '../../layout/footer';
-import {sendQuickSms} from '../../actions/quick-sms.actions';
-import { useDispatch } from 'react-redux';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -17,27 +15,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SmsPage() {
+export default function EditContactPage() {
   const classes = useStyles();
-  const [sendSms ,setsendSms] = useState({
-    phoneNumber:'',
-    account:'',
-    message:''
-  });
-  const dispatch = useDispatch();
-  const {phoneNumber , account ,message} = sendSms
-
-  function onChange(e){
-    const { name, value } = e.target;
-    setsendSms(sendSms => ({ ...sendSms, [name]: value }));
-  }
-  
-  function onSubmit(e) {
-    e.preventDefault()
-    console.log(sendSms)
-    dispatch(sendQuickSms(sendSms))
-  }
-
   return (
     <div>
         <Navbar/>
@@ -45,26 +24,20 @@ export default function SmsPage() {
      <br/>
       <Grid  item xs={12}>
         <Paper className={classes.paper}>
-          <h5>Send Quick SMS</h5>
-          <form onSubmit={onSubmit}>
+          <h5>Edit Contact</h5>
+          <form>
             <div className="form-group">
-              <label>Mobile Number</label>
+              <label>Contact list name</label>
               <input
+                type="email"
                 className="form-control"
-                name="phoneNumber"
-                value={phoneNumber}
-                onChange={onChange}
               />
             </div>
             <div className="form-group">
               <label >
-                Select account to send from
+                Select account 
               </label>
-              <select className="form-control" 
-               name="account"
-               value={account}
-               onChange={onChange}
-              >
+              <select className="form-control" >
                 <option>-- Select account --</option>
                 <option>2</option>
                 <option>3</option>
@@ -73,17 +46,14 @@ export default function SmsPage() {
               </select>
             </div>
             <div className="form-group">
-              <label >Message</label>
+              <label >Contact Description</label>
               <textarea
                 className="form-control"
                 rows="3"
-                name="message"
-                value={message}
-                onChange={onChange}
               ></textarea>
             </div>
             <button type="submit" className="btn btn-primary">
-              Submit
+              Update Contact
             </button>
           </form>
         </Paper>

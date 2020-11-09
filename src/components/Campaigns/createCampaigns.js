@@ -13,10 +13,10 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(2),
     color: theme.palette.text.secondary,
   },
-
+  
 }));
 
-export default function EditAccountPage() {
+export default function CreateCampaignPage() {
   const classes = useStyles();
   return (
     <div>
@@ -25,10 +25,10 @@ export default function EditAccountPage() {
      <br/>
       <Grid  item xs={12}>
         <Paper className={classes.paper}>
-          <h5>Edit an account</h5>
+          <h5>Create a campaign</h5>
           <form>
             <div class="form-group">
-              <label>Account Name</label>
+              <label>Campaign Name</label>
               <input
                 type="email"
                 class="form-control"
@@ -36,7 +36,7 @@ export default function EditAccountPage() {
             </div>
             <div class="form-group">
               <label >
-                Account type
+                Contact list
               </label>
               <select class="form-control" >
                 <option>-- Select account type --</option>
@@ -45,14 +45,34 @@ export default function EditAccountPage() {
               </select>
             </div>
             <div class="form-group">
-              <label >Description</label>
+              <label >
+                Account
+              </label>
+              <select class="form-control" >
+                <option>-- Select account type --</option>
+                <option>Postpaid</option>
+                <option>Prepaid</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label >
+                Custom Field
+              </label>
+              <select class="form-control" >
+                <option>-- Select account type --</option>
+                <option>Postpaid</option>
+                <option>Prepaid</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label >Message</label>
               <textarea
                 class="form-control"
                 rows="3"
               ></textarea>
             </div>
             <button type="submit" class="btn btn-primary">
-              Update Account
+              Create Account
             </button>
           </form>
         </Paper>

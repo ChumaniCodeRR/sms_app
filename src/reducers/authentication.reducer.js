@@ -1,4 +1,8 @@
-const initialState = {};
+const initialState = {
+  user:[],
+  errors:'',
+  message:''
+};
   
   export default function authentication (state = initialState, action) {
     switch (action.type) {

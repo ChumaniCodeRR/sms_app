@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(2),
     color: theme.palette.text.secondary,
   },
-  
+
 }));
 
 export default function CreateAccountPage() {
@@ -25,7 +25,7 @@ export default function CreateAccountPage() {
      <br/>
       <Grid  item xs={12}>
         <Paper className={classes.paper}>
-          <h3>Create new account</h3>
+          <h5>Create new account</h5>
           <form>
             <div class="form-group">
               <label>Account Name</label>

@@ -59,7 +59,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Menubar() {
   const classes = useStyles();
-  const [value, setValue] = React.useState(0);
+  const [value, setValue] = React.useState();
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -70,44 +70,39 @@ export default function Menubar() {
       <AppBar position="static" color="default">
         <Tabs
           value={value}
-          onChange={handleChange}
           variant="fullWidth"
           indicatorColor="secondary"
           textColor="secondary"
-          aria-label="icon label tabs example"
+          onChange={handleChange}
         >
-          {" "}
-          <Link to="home" style={{width:'100%'}}> 
-            <Tab label="Dashboard" icon={<HomeIcon />} {...a11yProps(0)} />
+          <Link to="home" style={{width:'100%'}} {...a11yProps(0)}> 
+            <Tab label="Dashboard" icon={<HomeIcon />}  />
           </Link>
-          <Link to="sms-page" style={{width:'100%'}}>
-            <Tab label="Quick SMS" icon={<SmsIcon />} {...a11yProps(1)} />
+          <Link to="sms-page" style={{width:'100%'}} {...a11yProps(1)}>
+            <Tab label="Quick SMS" icon={<SmsIcon />}  />
           </Link>
           <Link to="" style={{width:'100%'}}>
-            <Tab label="Users" icon={<GroupIcon />} {...a11yProps(2)} />
+            <Tab label="Users" icon={<GroupIcon />}  />
           </Link>
           <Link to="accounts" style={{width:'100%'}}>
             <Tab
               label="Accounts"
               icon={<AccountBalanceWalletIcon />}
-              {...a11yProps(3)}
             />
           </Link>
-          <Link to="" style={{width:'100%'}}>
+          <Link to="contact-list" style={{width:'100%'}}>
             <Tab
               label="Contact list"
               icon={<ContactsIcon />}
-              {...a11yProps(4)}
             />
           </Link>
           <Link to="campaigns" style={{width:'100%'}}>
-            <Tab label="Campaings" icon={<EmailIcon />} {...a11yProps(5)} />
+            <Tab label="Campaings" icon={<EmailIcon />} />
           </Link>
           <Link to="" style={{width:'100%'}}>
             <Tab
               label="Integration"
               icon={<SettingsIcon />}
-              {...a11yProps(6)}
             />
           </Link>
         </Tabs>
