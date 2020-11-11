@@ -1,19 +1,14 @@
-import http from '../helpers/http-interceptor';
+import {SEND_SMS_SUCCESS,SEND_SMS_FAILURE} from './types';
 
 export const sendQuickSms = (data) => {
-    return dispatch => {
-        return http.post('send',data)
-          .then(response => {
-            dispatch({
-              type: "SEND_SMS_SUCCESS",
-              payload: response.data
-            });
-          })
-          .catch(error => {
-            dispatch({
-              type: "SEND_SMS_FAILURE",
-              payload: error.data
-            });
-          });
-      };
+    return (dispatch) => {
+          
+     };
+
+     function success(sms) {
+      return { type: SEND_SMS_SUCCESS,sms};
+    }
+    function failure(error) {
+      return { type: SEND_SMS_FAILURE, error };
+    }
 }

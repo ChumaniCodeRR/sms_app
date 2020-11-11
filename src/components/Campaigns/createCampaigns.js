@@ -4,7 +4,9 @@ import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 import Navbar from '../../layout/navbar';
 import FooterPage from '../../layout/footer';
-
+import Button from "@material-ui/core/Button";
+import SaveIcon from "@material-ui/icons/Save";
+import Icon from "@material-ui/core/Icon";
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -25,7 +27,7 @@ export default function CreateCampaignPage() {
      <br/>
       <Grid  item xs={12}>
         <Paper className={classes.paper}>
-          <h5>Create a campaign</h5>
+          <h5>CREATE A CAMPAIGN</h5>
           <form>
             <div class="form-group">
               <label>Campaign Name</label>
@@ -71,9 +73,15 @@ export default function CreateCampaignPage() {
                 rows="3"
               ></textarea>
             </div>
-            <button type="submit" class="btn btn-primary">
-              Create Account
-            </button>
+            <Button
+                variant="contained"
+                color="primary"
+                className={classes.button}
+                startIcon={<SaveIcon />}
+              >
+                Create Campaign
+              </Button>
+            
           </form>
         </Paper>
       </Grid>

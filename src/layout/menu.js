@@ -16,39 +16,6 @@ import Box from "@material-ui/core/Box";
 import { Link } from "react-router-dom";
 
 
-function TabPanel(props) {
-  const { children, value, index, ...other } = props;
-
-  return (
-    <div
-      role="tabpanel"
-      hidden={value !== index}
-      id={`scrollable-force-tabpanel-${index}`}
-      aria-labelledby={`scrollable-force-tab-${index}`}
-      {...other}
-    >
-      {value === index && (
-        <Box p={3}>
-          <Typography>{children}</Typography>
-        </Box>
-      )}
-    </div>
-  );
-}
-
-TabPanel.propTypes = {
-  children: PropTypes.node,
-  index: PropTypes.any.isRequired,
-  value: PropTypes.any.isRequired,
-};
-
-function a11yProps(index) {
-  return {
-    id: `scrollable-force-tab-${index}`,
-    "aria-controls": `scrollable-force-tabpanel-${index}`,
-  };
-}
-
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -59,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Menubar() {
   const classes = useStyles();
-  const [value, setValue] = React.useState();
+  const [value, setValue] = React.useState(null);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -73,12 +40,12 @@ export default function Menubar() {
           variant="fullWidth"
           indicatorColor="secondary"
           textColor="secondary"
-          onChange={handleChange}
+          aria-label="icon label tabs example"  
         >
-          <Link to="home" style={{width:'100%'}} {...a11yProps(0)}> 
+          <Link to="home" style={{width:'100%'}} > 
             <Tab label="Dashboard" icon={<HomeIcon />}  />
           </Link>
-          <Link to="sms-page" style={{width:'100%'}} {...a11yProps(1)}>
+          <Link to="sms-page" style={{width:'100%'}}>
             <Tab label="Quick SMS" icon={<SmsIcon />}  />
           </Link>
           <Link to="" style={{width:'100%'}}>

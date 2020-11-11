@@ -19,6 +19,7 @@ import AccountHistoryPage from './components/accounts/acount-history';
 import ViewContactPage from './components/contactList/view-contact-details';
 import ViewEditContactPage from './components/contactList/viewEditContact';
 import ViewCreateContactPage from './components/contactList/viewCreateContact';
+import EditContactPage from './components/contactList/edit-contact'
 const hist = createBrowserHistory();
 
 function App() {
@@ -43,7 +44,7 @@ function App() {
       {/* ####### Contact list ###### */}
       <Route exact path="/contact-list" component={ContactPage} />
       <Route exact path="/create-contact" component={CreateContactPage}/>
-      <Route exact path="/edit-contact" component={EditAccountPage}/>
+      <Route exact path="/edit-contact" component={EditContactPage}/>
       <Route exact path="/view-conctact" component={ViewContactPage} />
       <Route exact path="/view-create-contact" component={ViewCreateContactPage}/>
       <Route exact path="/view-edit-contact" component={ViewEditContactPage}/>

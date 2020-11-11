@@ -4,6 +4,9 @@ import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 import Navbar from '../../layout/navbar';
 import FooterPage from '../../layout/footer';
+import Button from "@material-ui/core/Button";
+import SaveIcon from "@material-ui/icons/Save";
+import Icon from "@material-ui/core/Icon";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -24,7 +27,7 @@ export default function ViewCreateContactPage() {
      <br/>
       <Grid  item xs={12}>
         <Paper className={classes.paper}>
-          <h5>Create Contact</h5>
+          <h5>CREATE CONTACT</h5>
           <form>
             <div className="form-group">
               <label>First Name</label>
@@ -54,10 +57,15 @@ export default function ViewCreateContactPage() {
                 className="form-control"
               />
             </div>
+            <Button
+                variant="contained"
+                color="primary"
+                className={classes.button}
+                startIcon={<SaveIcon />}
+              >
+                 Create Contact
+              </Button>
             
-            <button type="submit" className="btn btn-primary">
-              Create Contact
-            </button>
           </form>
         </Paper>
       </Grid>

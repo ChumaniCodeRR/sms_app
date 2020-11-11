@@ -1,3 +1,4 @@
+import {SEND_SMS_SUCCESS,SEND_SMS_FAILURE} from '../actions/types';
 const initialState = {
     sendSms:[],
     errors:'',
@@ -6,7 +7,7 @@ const initialState = {
     
     export default function sendQuickSms (state = initialState, action) {
       switch (action.type) {
-        case "SEND_SMS_SUCCESS" :
+        case SEND_SMS_SUCCESS :
           return {
             ...state,
             sendSms: action.payload.data,
@@ -14,7 +15,7 @@ const initialState = {
             message: action.payload.message ? action.payload.message : null
           };
     
-        case "SEND_SMS_FAILURE" :
+        case SEND_SMS_FAILURE :
           return {
             ...state,
             status: action.payload.success,

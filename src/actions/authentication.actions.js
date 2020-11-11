@@ -1,46 +1,46 @@
-import http from '../helpers/http-interceptor';
+import {userService} from '../services/auth-service';
+import {LOGIN_FAILURE,LOGIN_SUCCESS,LOGIN_REQUEST,LOGOUT,RESET_PASSWORD}from "./types";
 
 export const login = (data) => {
-    return dispatch => {
-      return http.post('auth/login', data, {
-        headers: {
-          Accept: 'application/json',
-          'Content-type': 'application/json'
-        }
-      })
-        .then(response => {
-          dispatch({
-            type: "SET_LOGGED_IN_USER",
-            payload: response.data
-          });
-          if(response.data.success === true) {
-            localStorage.setItem('access_token', response.data.data.token);
-          }
-        })
-        .catch(error => {
-          console.log(error.data);
-          dispatch({
-            type: "SET_LOGGED_IN_USER",
-            payload: error.data
-          });
-        });
-    };
-  };
+  return (dispatch) => {
+    dispatch(request({ data}));
   
-  export const resetPassword = (email) => {
-    return dispatch => {
-      return http.post('auth/password/reset', { email: email })
-        .then(response => {
-          dispatch({
-            type: "RESET_PASSWORD",
-            payload: response.data
-          });
-        })
-        .catch(error => {
-          dispatch({
-            type: "RESET_PASSWORD",
-            payload: error.data
-          });
-        });
-    };
+    userService.login(data).then(
+      (user) => {
+        dispatch(success(user)); 
+      },
+      (error) => {
+        dispatch(failure(error.toString()));
+      }
+    );
   };
+
+  function request(user) {
+    return { type: LOGIN_REQUEST, user };
+  }
+  function success(user) {
+    return { type: LOGIN_SUCCESS, user };
+  }
+  function failure(error) {
+    return { type: LOGIN_FAILURE, error };
+  }
+};
+
+export const logout = () => {
+  userService.logout();
+  return { type: LOGOUT };
+};
+
+export const resetPassword = (email) => {
+   
+  return (dispatch) => {
+    userService.resetPassword(email).
+    then((user)=>{
+      dispatch(success(user)); 
+    })
+  };
+
+  function success(email){
+    return { type: RESET_PASSWORD,email}
+  }
+};

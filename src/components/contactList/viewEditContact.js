@@ -5,6 +5,9 @@ import Grid from "@material-ui/core/Grid";
 import Navbar from '../../layout/navbar';
 import FooterPage from '../../layout/footer';
 import { Link } from "react-router-dom";
+import Button from "@material-ui/core/Button";
+import SaveIcon from "@material-ui/icons/Save";
+import Icon from "@material-ui/core/Icon";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -30,7 +33,7 @@ export default function ViewEditContactPage() {
           
           <div class="row">
               <div class="col">
-              <h5>Update a Contact</h5>
+              <h5>UPDATE A CONTACT</h5>
               </div>
               <div class="col">
                 <Link to="view-conctact">
@@ -68,10 +71,15 @@ export default function ViewEditContactPage() {
                 className="form-control"
               />
             </div>
+            <Button
+                variant="contained"
+                color="primary"
+                className={classes.button}
+                startIcon={<SaveIcon />}
+              >
+                 Update Contact
+              </Button>
             
-            <button type="submit" className="btn btn-primary">
-              Update Contact
-            </button>
           </form>
         </Paper>
       </Grid>
