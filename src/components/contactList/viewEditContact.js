@@ -3,11 +3,9 @@ import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 import Navbar from '../../layout/navbar';
-import FooterPage from '../../layout/footer';
 import { Link } from "react-router-dom";
 import Button from "@material-ui/core/Button";
 import SaveIcon from "@material-ui/icons/Save";
-import Icon from "@material-ui/core/Icon";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -84,7 +82,7 @@ export default function ViewEditContactPage() {
         </Paper>
       </Grid>
     </div>
-    <FooterPage/>
+   
     </div>
     
   );

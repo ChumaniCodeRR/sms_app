@@ -86,7 +86,7 @@ export default function CreateCampaignPage() {
         </Paper>
       </Grid>
     </div>
-    <FooterPage/>
+   
     </div>
     
   );

@@ -1,0 +1,9 @@
+a {
+    color: #17a2b8 !important;
+    text-decoration: none;
+    background-color: transparent;
+}
+.MuiAppBar-colorPrimary {
+    color: #fff;
+    background-color: #17a2b8 !important;
+}

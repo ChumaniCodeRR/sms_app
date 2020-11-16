@@ -68,7 +68,7 @@ export default function CreateContactPage() {
         </Paper>
       </Grid>
     </div>
-    <FooterPage/>
+  
     </div>
     
   );

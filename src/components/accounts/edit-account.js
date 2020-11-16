@@ -66,7 +66,6 @@ export default function EditAccountPage() {
         </Paper>
       </Grid>
     </div>
-    <FooterPage/>
     </div>
     
   );

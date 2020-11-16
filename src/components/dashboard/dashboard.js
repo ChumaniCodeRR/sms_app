@@ -11,7 +11,6 @@ import TableRow from "@material-ui/core/TableRow";
 import Grid from "@material-ui/core/Grid";
 import "./dashboard.css";
 import Navbar from "../../layout/navbar";
-import FooterPage from "../../layout/footer";
 import { useDispatch, useSelector } from "react-redux";
 import { getSmsOverview } from "../../actions/sms-overview.actions";
 
@@ -136,7 +135,7 @@ export default function DashboardPage() {
           </Paper>
         </Grid>
       </div>
-      <FooterPage />
+      
     </div>
   );
 }

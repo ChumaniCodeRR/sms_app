@@ -1,8 +1,7 @@
 import {SEND_SMS_SUCCESS,SEND_SMS_FAILURE} from '../actions/types';
 const initialState = {
     sendSms:[],
-    errors:'',
-    message:''
+    errors: false
   };
     
     export default function sendQuickSms (state = initialState, action) {
@@ -11,16 +10,13 @@ const initialState = {
           return {
             ...state,
             sendSms: action.payload.data,
-            errors: action.payload.errors ? action.payload.errors : [],
-            message: action.payload.message ? action.payload.message : null
+            errors: false
           };
     
         case SEND_SMS_FAILURE :
           return {
             ...state,
-            status: action.payload.success,
-            errors: action.payload.errors ? action.payload.errors : [],
-            message: action.payload.message ? action.payload.message: null
+            errors: true
           };
           
         default:

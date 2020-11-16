@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function CreateAccountPage() {
+export default function CreateSuperAdminPage() {
   const classes = useStyles();
   return (
     <div>
@@ -27,23 +27,23 @@ export default function CreateAccountPage() {
         <br />
         <Grid item xs={12}>
           <Paper className={classes.paper}>
-            <h5>CREATE NEW ACCOUNT</h5>
+            <h5>ADD A SUPER ADMIN</h5>
             <form>
               <div class="form-group">
-                <label>Account Name</label>
+                <label>First Name</label>
                 <input type="email" class="form-control" />
               </div>
               <div class="form-group">
-                <label>Account type</label>
-                <select class="form-control">
-                  <option>-- Select account type --</option>
-                  <option>Postpaid</option>
-                  <option>Prepaid</option>
-                </select>
+                <label>Last Name</label>
+                <input type="email" class="form-control" />
               </div>
               <div class="form-group">
-                <label>Description</label>
-                <textarea class="form-control" rows="3"></textarea>
+                <label>Email Address</label>
+                <input type="email" class="form-control" />
+              </div>
+              <div class="form-group">
+                <label>Phone Number</label>
+                <input type="email" class="form-control" />
               </div>
               <Button
                 variant="contained"
@@ -51,7 +51,7 @@ export default function CreateAccountPage() {
                 className={classes.button}
                 startIcon={<SaveIcon />}
               >
-                Create Account
+                Create
               </Button>
             </form>
           </Paper>

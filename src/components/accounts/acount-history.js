@@ -95,7 +95,6 @@ export default function AccountHistoryPage() {
           </Paper>
         </Grid>
       </div>
-      <FooterPage />
     </div>
   );
 }

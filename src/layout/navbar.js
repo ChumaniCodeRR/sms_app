@@ -9,6 +9,9 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import logo from "../assets/Logo.png";
 import Menubar from './menu';
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
+import './theme.css'
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -23,6 +26,21 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Navbar() {
   const classes = useStyles();
+   //user menu buttom and controlls
+   const [value, setValue] = React.useState(0);
+   const [anchorEl, setAnchorEl] = React.useState(null);
+   const handleClick = (event) => {
+     setAnchorEl(event.currentTarget);
+   };
+ 
+   const handleClose = () => {
+     setAnchorEl(null);
+   };
+ 
+ 
+   const handleChange = (event, newValue) => {
+     setValue(newValue);
+   };
 
   return (
     <div className={classes.root}>
@@ -31,7 +49,22 @@ export default function Navbar() {
           <Typography variant="h6" className={classes.title}>
           <img src={logo}  alt="logo" height="60"/>
           </Typography>
-          <Button color="inherit">Lloyd Bunhle</Button>
+          <Button color="inherit" aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick} >Lloyd Bunhle</Button>
+          <Menu
+          id="simple-menu"
+          anchorEl={anchorEl}
+          keepMounted
+          open={Boolean(anchorEl)}
+          onClose={handleClose}
+        >
+          <MenuItem onClick={handleClose}>
+           Profile
+          </MenuItem>
+          <MenuItem onClick={handleClose}>
+           Log out
+          </MenuItem>
+          
+        </Menu>
         </Toolbar>
       </AppBar>
       <Menubar/>

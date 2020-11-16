@@ -1,9 +1,8 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { makeStyles } from "@material-ui/core/styles";
-import AppBar from "@material-ui/core/AppBar";
-import Tabs from "@material-ui/core/Tabs";
-import Tab from "@material-ui/core/Tab";
+import React from 'react';
+import Paper from '@material-ui/core/Paper';
+import { makeStyles } from '@material-ui/core/styles';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
 import HomeIcon from "@material-ui/icons/Home";
 import AccountBalanceWalletIcon from "@material-ui/icons/AccountBalanceWallet";
 import ContactsIcon from "@material-ui/icons/Contacts";
@@ -11,69 +10,88 @@ import EmailIcon from "@material-ui/icons/Email";
 import SmsIcon from "@material-ui/icons/Sms";
 import SettingsIcon from "@material-ui/icons/Settings";
 import GroupIcon from "@material-ui/icons/Group";
-import Typography from "@material-ui/core/Typography";
-import Box from "@material-ui/core/Box";
 import { Link } from "react-router-dom";
-
-
-const useStyles = makeStyles((theme) => ({
+import Button from '@material-ui/core/Button';
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
+import './theme.css'
+const useStyles = makeStyles({
   root: {
     flexGrow: 1,
-    width: "100%",
-    backgroundColor: theme.palette.background.paper,
+    
   },
-}));
+});
 
-export default function Menubar() {
+export default function IconLabelTabs() {
   const classes = useStyles();
-  const [value, setValue] = React.useState(null);
+  const [value, setValue] = React.useState(0);
+
+  //user menu buttom and controlls
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
 
   return (
-    <div className={classes.root}>
-      <AppBar position="static" color="default">
-        <Tabs
-          value={value}
-          variant="fullWidth"
-          indicatorColor="secondary"
-          textColor="secondary"
-          aria-label="icon label tabs example"  
+    <Paper square className={classes.root}>
+      <Tabs
+        value={value}
+        onChange={handleChange}
+        variant="fullWidth"
+        indicatorColor="secondary"
+        textColor="secondary"
+        aria-label="icon label tabs example"
+      >
+        <Link to="home" style={{ width: "100%" }}>
+          <Tab label="Dashboard" icon={<HomeIcon />} />
+        </Link>
+        <Link to="sms-page" style={{ width: "100%" }}>
+          <Tab label="Quick SMS" icon={<SmsIcon />} />
+        </Link>
+        <Link aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick} style={{ width: "100%" }}>
+          <Tab label="Users" icon={<GroupIcon />} />
+        </Link>
+        <Menu
+          id="simple-menu"
+          anchorEl={anchorEl}
+          keepMounted
+          open={Boolean(anchorEl)}
+          onClose={handleClose}
         >
-          <Link to="home" style={{width:'100%'}} > 
-            <Tab label="Dashboard" icon={<HomeIcon />}  />
-          </Link>
-          <Link to="sms-page" style={{width:'100%'}}>
-            <Tab label="Quick SMS" icon={<SmsIcon />}  />
-          </Link>
-          <Link to="" style={{width:'100%'}}>
-            <Tab label="Users" icon={<GroupIcon />}  />
-          </Link>
-          <Link to="accounts" style={{width:'100%'}}>
-            <Tab
-              label="Accounts"
-              icon={<AccountBalanceWalletIcon />}
-            />
-          </Link>
-          <Link to="contact-list" style={{width:'100%'}}>
-            <Tab
-              label="Contact list"
-              icon={<ContactsIcon />}
-            />
-          </Link>
-          <Link to="campaigns" style={{width:'100%'}}>
-            <Tab label="Campaings" icon={<EmailIcon />} />
-          </Link>
-          <Link to="" style={{width:'100%'}}>
-            <Tab
-              label="Integration"
-              icon={<SettingsIcon />}
-            />
-          </Link>
-        </Tabs>
-      </AppBar>
-    </div>
+          <MenuItem onClick={handleClose}>
+            <Link to="super-admin">
+            Super Admin
+            </Link>
+          </MenuItem>
+          <MenuItem onClick={handleClose}>
+           <Link to="admin">Admin</Link> 
+          </MenuItem>
+          <MenuItem onClick={handleClose}>
+            <Link to="manager">Manager</Link>
+          </MenuItem>
+        </Menu>
+        <Link to="accounts" style={{ width: "100%" }}>
+          <Tab label="Accounts" icon={<AccountBalanceWalletIcon />} />
+        </Link>
+        <Link to="contact-list" style={{ width: "100%" }}>
+          <Tab label="Contact list" icon={<ContactsIcon />} />
+        </Link>
+        <Link to="campaigns" style={{ width: "100%" }}>
+          <Tab label="Campaings" icon={<EmailIcon />} />
+        </Link>
+        <Link to="integration" style={{ width: "100%" }}>
+          <Tab label="Integration" icon={<SettingsIcon />} />
+        </Link>
+      </Tabs>
+    </Paper>
   );
 }

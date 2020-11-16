@@ -3,15 +3,15 @@ import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 import Navbar from '../../layout/navbar';
-import FooterPage from '../../layout/footer';
 import AddCircleOutlineIcon from "@material-ui/icons/AddCircleOutline";
 import { Link } from "react-router-dom";
-import Select from '@material-ui/core/Select';
+import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
+import IconButton from "@material-ui/core/IconButton";
+import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
-import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
 import TablePagination from "@material-ui/core/TablePagination";
 import TableRow from "@material-ui/core/TableRow";
@@ -28,6 +28,16 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function ViewContactPage() {
+  // actions button controlls
+  const [anchorEl, setAnchorEl] = React.useState(null);
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
   //paginatins initial state
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
@@ -85,15 +95,26 @@ export default function ViewContactPage() {
                       <TableCell align="left">{row.msisdn}</TableCell>
                       <TableCell align="left">{row.custom}</TableCell>
                       <TableCell align="left">
-                        <Select
-                        labelId="demo-customized-select-label"
-                        id="demo-customized-select"
-                      >
-                        <MenuItem>
+                      <IconButton
+                          aria-label="more"
+                          aria-controls="simple-menu"
+                          aria-haspopup="true"
+                          onClick={handleClick}
+                        >
+                          <MoreHorizIcon />
+                        </IconButton>
+                        <Menu
+                          id="simple-menu"
+                          anchorEl={anchorEl}
+                          keepMounted
+                          open={Boolean(anchorEl)}
+                          onClose={handleClose}
+                        >
+                          <MenuItem onClick={handleClose}>
                           <Link to="view-edit-contact">Edit</Link>
                         </MenuItem>
-                        <MenuItem>Delete</MenuItem>
-                      </Select>
+                        <MenuItem onClick={handleClose}>Delete</MenuItem>
+                        </Menu>
                       </TableCell>
                     </TableRow>
                   ))}
@@ -111,7 +132,7 @@ export default function ViewContactPage() {
           </Paper>
         </Grid>
       </div>
-      <FooterPage />
+     
     </div>
   );
 }
