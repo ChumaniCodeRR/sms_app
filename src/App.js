@@ -30,6 +30,7 @@ import ManagersPage from "./components/users/managers";
 import CreateManagerPage from "./components/users/managers-create";
 import EditManagerPage from "./components/users/managers-edit";
 import AdminPage from "./components/users/admin";
+import ProfilePage from './components/profile/profile';
 
 const hist = createBrowserHistory();
 
@@ -90,6 +91,8 @@ function App() {
             <Route exact path="/manager" component={ManagersPage}/>
             <Route  exact path="/manager-create" component={CreateManagerPage}/>
             <Route exact path="/manager-edit" component={EditManagerPage} />
+
+            <Route exact path="/profile" component={ProfilePage}/>
           </Switch>
         </Router>
       </div>

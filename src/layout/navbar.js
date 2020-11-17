@@ -12,6 +12,7 @@ import Menubar from './menu';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import './theme.css'
+import { Link } from "react-router-dom";
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -58,7 +59,7 @@ export default function Navbar() {
           onClose={handleClose}
         >
           <MenuItem onClick={handleClose}>
-           Profile
+           <Link to="profile">Profile</Link>
           </MenuItem>
           <MenuItem onClick={handleClose}>
            Log out

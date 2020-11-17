@@ -47,7 +47,7 @@ export default function IconLabelTabs() {
         value={value}
         onChange={handleChange}
         variant="fullWidth"
-        indicatorColor="secondary"
+        indicatorColor="default"
         textColor="secondary"
         aria-label="icon label tabs example"
       >

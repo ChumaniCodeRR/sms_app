@@ -6,8 +6,10 @@ import Navbar from "../../layout/navbar";
 import FooterPage from "../../layout/footer";
 import AddCircleOutlineIcon from "@material-ui/icons/AddCircleOutline";
 import { Link } from "react-router-dom";
-import Select from "@material-ui/core/Select";
-import MenuItem from "@material-ui/core/MenuItem";
+import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
+import IconButton from "@material-ui/core/IconButton";
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
@@ -28,13 +30,23 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function ManagersPage() {
+     // actions button controlls
+ const [anchorEl, setAnchorEl] = React.useState(null);
+
+ const handleClick = (event) => {
+   setAnchorEl(event.currentTarget);
+ };
+
+ const handleClose = () => {
+   setAnchorEl(null);
+ };
   //paginatins initial state
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
   const classes = useStyles();
 
   const dispatch = useDispatch();
-  const accountList = useSelector((state) => state.getAllAccounts);
+  const managersList = useSelector((state) => state.users);
 
   //pagination controlls
   const handleChangePage = (event, newPage) => {
@@ -70,49 +82,54 @@ export default function ManagersPage() {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {/* {accountList.accounts
+                {managersList.managers
                   .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                   .map((row) => (
-                    <TableRow key={row.accountName}>
-                      <TableCell align="left">{row.accountName}</TableCell>
-                      <TableCell align="left">{row.accountType}</TableCell>
-                      <TableCell align="left">{row.acountToken}</TableCell>
+                    <TableRow key={row.firstName}>
+                      <TableCell align="left">{row.firstName}</TableCell>
+                      <TableCell align="left">{row.lastName}</TableCell>
+                      <TableCell align="left">{row.email}</TableCell>
                       <TableCell align="left">
-                        {row.accountDescription}
+                        {row.phoneNumber}
                       </TableCell>
-                      <TableCell align="left">{row.balance}</TableCell>
+                      <TableCell align="left">{row.status}</TableCell>
 
                       <TableCell align="left">
-                        <Select
-                          labelId="demo-customized-select-label"
-                          id="demo-customized-select"
+                      <IconButton
+                          aria-label="more"
+                          aria-controls="simple-menu"
+                          aria-haspopup="true"
+                          onClick={handleClick}
+                        >
+                          <MoreHorizIcon />
+                        </IconButton>
+                        <Menu
+                          id="simple-menu"
+                          anchorEl={anchorEl}
+                          keepMounted
+                          open={Boolean(anchorEl)}
+                          onClose={handleClose}
                         >
                           <MenuItem>
-                            <Link to="edit-account">Edit</Link>
-                          </MenuItem>
-                          <MenuItem>
-                            <Link to="">Deposit</Link>
-                          </MenuItem>
-                          <MenuItem>
-                            <Link to="account-history">Deposit History</Link>
+                            <Link to="manager-edit">Edit</Link>
                           </MenuItem>
                           <MenuItem>Delete</MenuItem>
-                          <MenuItem>Download</MenuItem>
-                        </Select>
+                          <MenuItem>Deactivate</MenuItem>
+                        </Menu>
                       </TableCell>
                     </TableRow>
-                  ))} */}
+                  ))}
               </TableBody>
             </Table>
-            {/* <TablePagination
+            <TablePagination
               rowsPerPageOptions={[5, 10, 15]}
               component="div"
-              count={accountList.accounts.length}
+              count={managersList.managers.length}
               rowsPerPage={rowsPerPage}
               page={page}
               onChangePage={handleChangePage}
               onChangeRowsPerPage={handleChangeRowsPerPage}
-            /> */}
+            />
           </Paper>
         </Grid>
       </div>
