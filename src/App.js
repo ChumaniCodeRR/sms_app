@@ -96,8 +96,7 @@ function App() {
           </Switch>
         </Router>
       </div>
-      {hist.location.pathname === '/' ? null
-      :  <FooterPage />}
+      <FooterPage />
      
     </div>
   );

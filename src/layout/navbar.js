@@ -13,6 +13,7 @@ import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import './theme.css'
 import { Link } from "react-router-dom";
+import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -50,7 +51,7 @@ export default function Navbar() {
           <Typography variant="h6" className={classes.title}>
           <img src={logo}  alt="logo" height="60"/>
           </Typography>
-          <Button color="inherit" aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick} >Lloyd Bunhle</Button>
+          <Button color="inherit" aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick} startIcon={<AccountCircleIcon />} >Lloyd Bunhle</Button>
           <Menu
           id="simple-menu"
           anchorEl={anchorEl}
@@ -62,7 +63,7 @@ export default function Navbar() {
            <Link to="profile">Profile</Link>
           </MenuItem>
           <MenuItem onClick={handleClose}>
-           Log out
+           <Link to="/">Log out</Link>
           </MenuItem>
           
         </Menu>

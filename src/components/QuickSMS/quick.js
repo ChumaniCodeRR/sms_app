@@ -83,6 +83,7 @@ export default function SmsPage() {
                 ></textarea>
               </div>
               <Button
+                 type="submit"
                 variant="contained"
                 color="primary"
                 className={classes.button}

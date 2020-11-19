@@ -1,4 +1,4 @@
-import {SEND_SMS_SUCCESS,SEND_SMS_FAILURE} from '../actions/types';
+import {GET_CAMPAIGNS_SUCCESS,GET_CAMPAIGNS_FAILURE,EDIT_CAMPAIGNS_SUCCESS,EDIT_CAMPAIGNS_FAILURE} from '../actions/types';
 const initialState = {
     campaigns:[
         {campaignName:"Bolt",
@@ -40,19 +40,27 @@ const initialState = {
     
     export default function campaigns (state = initialState, action) {
       switch (action.type) {
-        case SEND_SMS_SUCCESS :
+        case GET_CAMPAIGNS_SUCCESS :
           return {
             ...state,
-            sendSms: action.payload,
+            campaigns: action.payload,
             errors: false
           };
     
-        case SEND_SMS_FAILURE :
+        case GET_CAMPAIGNS_FAILURE :
           return {
             ...state,
             errors:true,
           };
-          
+         case EDIT_CAMPAIGNS_SUCCESS : 
+             return {
+               ...state,
+             }
+        case EDIT_CAMPAIGNS_FAILURE : 
+             return {
+              ...state,
+              errors:true,
+             }
         default:
           return state;
       }

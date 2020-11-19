@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState ,useRef} from "react";
 import "./login.css";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -96,15 +96,7 @@ export default function Login(props) {
           </Card>
         </div>
       </Container>
-      <Typography variant="body2" color="textSecondary" align="center">
-        {new Date().getFullYear()}
-        {"."}
-        {"Copyright © "}Welcome to Vetro Media SMS App. All rights reserved |
-        Design by
-        <Link color="inherit" href="https://www.vetro.co.za/">
-          www.vetro.co.za
-        </Link>{" "}
-      </Typography>
+  
     </div>
   );
 }

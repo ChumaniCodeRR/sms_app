@@ -124,6 +124,12 @@ export default function AccountPage() {
                           <MenuItem onClick={handleClose}>
                           <Link to="account-history">Deposit History</Link>
                           </MenuItem>
+                          <MenuItem onClick={handleClose}>
+                             Delete
+                          </MenuItem>
+                          <MenuItem onClick={handleClose}>
+                             Download
+                          </MenuItem>
                         </Menu>
     
                       </TableCell>

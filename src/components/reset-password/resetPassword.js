@@ -77,15 +77,6 @@ export default function ResetPassword(){
             </Card>
           </div>
         </Container>
-        <Typography variant="body2" color="textSecondary" align="center">
-          {new Date().getFullYear()}
-          {"."}
-          {"Copyright © "}Welcome to Vetro Media SMS App. All rights reserved |
-          Design by
-          <Link color="inherit" href="https://www.vetro.co.za/">
-            www.vetro.co.za
-          </Link>{" "}
-        </Typography>
       </div>
     )
 }

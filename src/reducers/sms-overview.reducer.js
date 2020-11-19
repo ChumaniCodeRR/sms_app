@@ -89,7 +89,7 @@ export default function smsOverview(state = initialState, action) {
     case GET_SMS_SUCCESS:
       return { ...state, sms: action.payload, errors: false };
     case GET_SMS_FAILURE:
-      return { ...state, loading: false, errors: true };
+      return { ...state, errors: true };
     default:
       return state;
   }
