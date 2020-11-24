@@ -3,7 +3,9 @@ import {authHeader} from '../helpers/auth-headers';
 
 export const contactService = {
     getAll,
-    viewContactDetails
+    viewContactDetails,
+    editContact,
+    createContact
 }
 
 function getAll() {
@@ -22,4 +24,24 @@ function viewContactDetails(id) {
     };
 
     return axios.get("/contacts/all/"+id,requestOptions);
+}
+
+function editContact(data){
+    const requestOptions = {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: data
+    };
+
+    return axios.put(`/contacts/`, requestOptions);
+}
+
+function createContact(data){
+    const requestOptions = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: data
+    };
+
+    return axios.post(`/contacts/`, requestOptions);
 }

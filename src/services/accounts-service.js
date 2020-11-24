@@ -3,7 +3,20 @@ import {authHeader} from '../helpers/auth-headers';
 
 export const accountService = {
     getAll,
-    getAllHistory
+    getAllHistory,
+    editAccount,
+    deleteAccount,
+    createAccount
+}
+
+function createAccount(data){
+    const requestOptions = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: data
+    };
+
+    return axios.post("/create-account/", requestOptions);
 }
 
 function getAll() {
@@ -22,4 +35,27 @@ function getAllHistory() {
     };
 
     return axios.get("/account-history/all",requestOptions);
+}
+
+function depositCredit(){
+
+}
+
+function editAccount(data){
+    const requestOptions = {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: data
+    };
+
+    return axios.put("/edit", requestOptions);
+}
+
+function deleteAccount(id){
+    const requestOptions = {
+        method: 'DELETE',
+        headers: authHeader()
+    };
+
+    return axios.delete("/remove"+id,requestOptions);
 }

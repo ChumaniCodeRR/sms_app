@@ -3,6 +3,11 @@ import {
   GET_CONTACT_FAILURE,
   GET_CONTACT_DETAILS_SUCCESS,
   GET_CONTACT_DETAILS_FAILURE,
+  EDIT_CONTACT_SUCCESS,
+  EDIT_CONTACT_FAILURE,
+  ADD_CONTACT_SUCCESS,
+  ADD_CONTACT_FAILURE,
+  DELETE_CONTACT,
 } from "../actions/types";
 const initialState = {
   contacts: [
@@ -108,6 +113,16 @@ const initialState = {
 
 export default function contacts(state = initialState, action) {
   switch (action.type) {
+    case ADD_CONTACT_SUCCESS:
+      return {
+        ...state,
+        errors: false,
+      };
+    case ADD_CONTACT_FAILURE:
+      return {
+        ...state,
+        errors: true,
+      };
     case GET_CONTACT_SUCCESS:
       return {
         ...state,
@@ -128,6 +143,15 @@ export default function contacts(state = initialState, action) {
         errors: false,
       };
     case GET_CONTACT_DETAILS_FAILURE:
+      return {
+        ...state,
+        errors: false,
+      };
+    case EDIT_CONTACT_SUCCESS:
+      return {
+        ...state,
+      };
+    case EDIT_CONTACT_FAILURE:
       return {
         ...state,
         errors: false,

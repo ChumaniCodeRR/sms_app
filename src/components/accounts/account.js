@@ -22,6 +22,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
+    width: "100%",
   },
   paper: {
     padding: theme.spacing(2),

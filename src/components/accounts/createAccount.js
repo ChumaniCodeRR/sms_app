@@ -7,6 +7,7 @@ import FooterPage from "../../layout/footer";
 import Button from "@material-ui/core/Button";
 import SaveIcon from "@material-ui/icons/Save";
 import Icon from "@material-ui/core/Icon";
+import { useForm } from "react-hook-form";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -19,6 +20,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function CreateAccountPage() {
+  const { register, handleSubmit, errors } = useForm();
   const classes = useStyles();
   return (
     <div>

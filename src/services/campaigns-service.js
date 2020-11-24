@@ -24,7 +24,7 @@ function editCampaigns(data){
         body: data
     };
 
-    return axios.put(`/campaigns/`, requestOptions);
+    return axios.put("/campaigns/", requestOptions);
 }
 
 function createCampaigns(data){
@@ -34,5 +34,5 @@ function createCampaigns(data){
         body: data
     };
 
-    return axios.post(`/campaigns/`, requestOptions);
+    return axios.post("/campaigns/", requestOptions);
 }

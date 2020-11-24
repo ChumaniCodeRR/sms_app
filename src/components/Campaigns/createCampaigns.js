@@ -20,6 +20,12 @@ const useStyles = makeStyles((theme) => ({
 
 export default function CreateCampaignPage() {
   const classes = useStyles();
+  //initial state
+  const [loginCredentials, setloginCredentials] = useState({
+    email: "",
+    password: "",
+  });
+
   return (
     <div>
         <Navbar/>
@@ -32,8 +38,9 @@ export default function CreateCampaignPage() {
             <div class="form-group">
               <label>Campaign Name</label>
               <input
-                type="email"
+                type="text"
                 class="form-control"
+                
               />
             </div>
             <div class="form-group">
