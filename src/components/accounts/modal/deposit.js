@@ -12,9 +12,6 @@ export default function Deposit({open ,handleClickOpen}) {
 
   return (
     <div>
-      {/* <Button variant="outlined" color="primary" onClick={handleClickOpen}>
-        Open alert dialog
-      </Button> */}
       <Dialog
         open={open}
         onClose={handleClickOpen}
@@ -35,10 +32,10 @@ export default function Deposit({open ,handleClickOpen}) {
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClickOpen} color="primary">
+          <Button onClick={handleClickOpen} color="default">
             Cancel
           </Button>
-          <Button onClick={handleClickOpen} color="primary" autoFocus>
+          <Button onClick={handleClickOpen} color="default" autoFocus>
             Save
           </Button>
         </DialogActions>

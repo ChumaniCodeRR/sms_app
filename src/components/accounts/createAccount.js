@@ -3,10 +3,8 @@ import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 import Navbar from "../../layout/navbar";
-import FooterPage from "../../layout/footer";
 import Button from "@material-ui/core/Button";
 import SaveIcon from "@material-ui/icons/Save";
-import Icon from "@material-ui/core/Icon";
 import { useForm } from "react-hook-form";
 
 const useStyles = makeStyles((theme) => ({
