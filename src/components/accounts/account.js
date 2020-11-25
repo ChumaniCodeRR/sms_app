@@ -18,6 +18,7 @@ import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
 import IconButton from "@material-ui/core/IconButton";
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
+import Deposit from './modal/deposit';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -43,9 +44,6 @@ export default function AccountPage() {
     setAnchorEl(null);
   };
 
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
   //paginatins initial state
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
@@ -62,6 +60,15 @@ export default function AccountPage() {
     setRowsPerPage(+event.target.value);
     setPage(0);
   };
+
+  // deposit modal controlls
+  const [showModal, updateShowModal] = React.useState(false);
+
+  const toggleModal = () => updateShowModal(state => !state);
+
+
+
+
 
   return (
     <div>
@@ -120,7 +127,9 @@ export default function AccountPage() {
                           <Link to="edit-account">Edit</Link>
                           </MenuItem>
                           <MenuItem onClick={handleClose}>
-                            <Link to="">Deposit</Link>
+                          <span onClick={toggleModal}>Deposit</span> 
+                          <Deposit open={showModal} handleClickOpen={toggleModal}  />
+
                           </MenuItem>
                           <MenuItem onClick={handleClose}>
                           <Link to="account-history">Deposit History</Link>
@@ -150,6 +159,7 @@ export default function AccountPage() {
           </Paper>
         </Grid>
       </div>
+
     </div>
   );
 }

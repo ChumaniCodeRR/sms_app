@@ -1,0 +1,16 @@
+.MuiBackdrop-root {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    z-index: -1;
+    position: fixed;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(0 0 0 / 0%) !important;
+    -webkit-tap-highlight-color: transparent;
+}
+.MuiPaper-elevation24 {
+    box-shadow: 0px 11px 15px -7px rgba(0,0,0,0.2), 0px 24px 38px 3px rgb(0 0 0 / 8%), 0px 9px 46px 8px rgb(0 0 0 / 0%) !important;
+}

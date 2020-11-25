@@ -20,7 +20,29 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function CreateAccountPage() {
-  const { register, handleSubmit, errors } = useForm();
+   //error handers 
+   const { register, handleSubmit, errors } = useForm();
+
+   //initial state
+  const [inputAccont, setinputAccont] = useState({
+    name: "",
+    account: "",
+    description:"",
+
+  });
+
+  const { name, account,description} = inputAccont;
+
+  function onChange(e){
+    const { name, value } = e.target;
+    setinputAccont(inputAccont => ({ ...inputAccont, [name]: value }));
+  }
+
+  function onSubmit(e) {
+    //  e.preventDefault()
+     console.log(inputAccont)
+  }
+
   const classes = useStyles();
   return (
     <div>
@@ -30,14 +52,22 @@ export default function CreateAccountPage() {
         <Grid item xs={12}>
           <Paper className={classes.paper}>
             <h5>CREATE NEW ACCOUNT</h5>
-            <form>
+            <form onSubmit={handleSubmit(onSubmit)}> 
               <div class="form-group">
                 <label>Account Name</label>
-                <input type="email" class="form-control" />
+                <input 
+                type="text" 
+                class="form-control"
+                name="name"
+                value={name}
+                onChange={onChange}
+                ref={register({ required: true })}
+                />
+                {errors.name && <span class="text-danger">This field is required</span>}
               </div>
               <div class="form-group">
                 <label>Account type</label>
-                <select class="form-control">
+                <select class="form-control" name="account" value={account} onChange={onChange}>
                   <option>-- Select account type --</option>
                   <option>Postpaid</option>
                   <option>Prepaid</option>
@@ -45,9 +75,16 @@ export default function CreateAccountPage() {
               </div>
               <div class="form-group">
                 <label>Description</label>
-                <textarea class="form-control" rows="3"></textarea>
+                <textarea class="form-control" rows="3"
+                 name="description"
+                 value={description}
+                 onChange={onChange}
+                 ref={register({ required: true })}
+                ></textarea>
+                {errors.description && <span class="text-danger">This field is required</span>}
               </div>
               <Button
+                type="submit"
                 variant="contained"
                 color="primary"
                 className={classes.button}
