@@ -10,7 +10,7 @@ import {
   DELETE_ACCOUNT_FAILURE,
   DELETE_ACCOUNT_SUCCESS,
   ADD_ACCOUNTS_SUCCESS,
-  ADD_ACCOUNTS_FAILURE
+  ADD_ACCOUNTS_FAILURE,
 } from "./types";
 import { accountService } from "../services/accounts-service";
 
@@ -54,7 +54,6 @@ export const getAccountHistory = () => {
   }
 };
 
-
 export const createAccount = (data) => {
   return (dispatch) => {
     accountService.createAccount(data).then(
@@ -75,6 +74,25 @@ export const createAccount = (data) => {
   }
 };
 
+export const depositCredit = (data) => {
+  return (dispatch) => {
+    accountService.depositCredit(data).then(
+      (data) => {
+        dispatch(success(data));
+      },
+      (error) => {
+        dispatch(failure(error.toString()));
+      }
+    );
+  };
+
+  function success(credit) {
+    return { type: DEPOSIT_CREDIT_SUCCESS, payload: credit };
+  }
+  function failure(error) {
+    return { type: DEPOSIT_CREDIT_FAILURE, error };
+  }
+};
 
 export const editAccount = (data) => {
   return (dispatch) => {
@@ -109,9 +127,29 @@ export const deleteAccount = (id) => {
   };
 
   function success(accounts) {
-    return { type: EDIT_ACCOUNT_SUCCESS, payload: accounts };
+    return { type: DELETE_ACCOUNT_SUCCESS, payload: accounts };
   }
   function failure(error) {
-    return { type: EDIT_ACCOUNT_FAILURE, error };
+    return { type: DELETE_ACCOUNT_FAILURE, error };
+  }
+};
+
+export const viewDepositHistory = () => {
+  return (dispatch) => {
+    accountService.getAllHistory().then(
+      (data) => {
+        dispatch(success(data));
+      },
+      (error) => {
+        dispatch(failure(error));
+      }
+    );
+  };
+
+  function success(history) {
+    return { type: DEPOSIT_HISTORY_SUCCESS, payload: history };
+  }
+  function failure(error) {
+    return { type: DEPOSIT_HISTORY_FAILURE, error };
   }
 };

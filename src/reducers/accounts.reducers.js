@@ -7,6 +7,8 @@ import {
   DEPOSIT_CREDIT_FAILURE,
   DEPOSIT_HISTORY_SUCCESS,
   DEPOSIT_HISTORY_FAILURE,
+  ADD_ACCOUNTS_SUCCESS,
+  ADD_ACCOUNTS_FAILURE
 } from "../actions/types";
 
 const initialState = {
@@ -139,6 +141,16 @@ const initialState = {
 
 export default function getAllAccounts(state = initialState, action) {
   switch (action.type) {
+    case ADD_ACCOUNTS_SUCCESS:
+      return {
+        ...state,
+        accounts: action.payload,
+      }
+    case ADD_ACCOUNTS_FAILURE:
+      return {
+        ...state,
+        errors: true,
+      }
     case GET_ACCOUNTS_SUCCESS:
       return {
         ...state,

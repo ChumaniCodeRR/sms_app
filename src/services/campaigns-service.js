@@ -36,3 +36,13 @@ function createCampaigns(data){
 
     return axios.post("/campaigns/", requestOptions);
 }
+
+function sendCampaings(){
+
+}
+function deleteCampaigns(id){
+}
+
+function download(){
+    
+}

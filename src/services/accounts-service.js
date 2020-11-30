@@ -6,7 +6,8 @@ export const accountService = {
     getAllHistory,
     editAccount,
     deleteAccount,
-    createAccount
+    createAccount,
+    depositCredit
 }
 
 function createAccount(data){
@@ -37,7 +38,14 @@ function getAllHistory() {
     return axios.get("/account-history/all",requestOptions);
 }
 
-function depositCredit(){
+function depositCredit(data){
+    const requestOptions = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: data
+    };
+
+    return axios.post("/add/credit", requestOptions);
 
 }
 

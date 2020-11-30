@@ -9,7 +9,7 @@ const initialState = {
         case SEND_SMS_SUCCESS :
           return {
             ...state,
-            sendSms: action.payload.data,
+            sendSms: action.payload,
             errors: false
           };
     

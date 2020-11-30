@@ -25,6 +25,7 @@
     "redux-devtools": "^3.7.0",
     "redux-devtools-extension": "^2.13.8",
     "redux-thunk": "^2.3.0",
+    "sweetalert2": "^10.10.4",
     "web-vitals": "^0.2.4"
   },
   "scripts": {
@@ -50,5 +51,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "eslint-plugin-react-hooks": "^4.2.0"
   }
 }

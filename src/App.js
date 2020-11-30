@@ -31,13 +31,18 @@ import CreateManagerPage from "./components/users/managers-create";
 import EditManagerPage from "./components/users/managers-edit";
 import AdminPage from "./components/users/admin";
 import ProfilePage from './components/profile/profile';
+import { Suspense } from 'react';
+
+
 
 const hist = createBrowserHistory();
 
 function App() {
 
   return (
-    <div className="page-container">
+    <Suspense fallback={'loading'}>
+     
+      <div className="page-container">
       <div className="content-wrap">
         <Router history={hist}>
           <Switch>
@@ -99,6 +104,9 @@ function App() {
       <FooterPage />
      
     </div>
+     
+    </Suspense>
+
   );
 }
 

@@ -28,10 +28,10 @@ export const editCampaigns = (data) =>{
     }
 
     function success(campaigns) {
-        return { type: GET_CAMPAIGNS_SUCCESS,payload:campaigns};
+        return { type: EDIT_CAMPAIGNS_SUCCESS,payload:campaigns};
       }
       function failure(error) {
-        return { type: GET_CAMPAIGNS_FAILURE, error };
+        return { type: EDIT_CAMPAIGNS_FAILURE, error };
       }
 }
 
