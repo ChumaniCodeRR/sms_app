@@ -1,5 +1,5 @@
 import "./App.css";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { HashRouter, Route } from 'react-router-dom'
 import Login from "./components/login/login";
 import ResetPassword from "./components/reset-password/resetPassword";
 import DashboardPage from "./components/dashboard/dashboard";
@@ -40,12 +40,12 @@ const hist = createBrowserHistory();
 function App() {
 
   return (
-    <Suspense fallback={'loading'}>
+  
      
       <div className="page-container">
-      <div className="content-wrap">
-        <Router history={hist}>
-          <Switch>
+      <div className="content-wrap" history={hist}>
+
+        <HashRouter >
             <Route path="/home" component={DashboardPage} />
             <Route exact path="/" component={Login} />
             <Route exact path="/reset-password" component={ResetPassword} />
@@ -98,14 +98,12 @@ function App() {
             <Route exact path="/manager-edit" component={EditManagerPage} />
 
             <Route exact path="/profile" component={ProfilePage}/>
-          </Switch>
-        </Router>
+        
+          </HashRouter>
       </div>
-      <FooterPage />
-     
+      <FooterPage /> 
     </div>
      
-    </Suspense>
 
   );
 }
