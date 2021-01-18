@@ -44,7 +44,6 @@ function App() {
      
       <div className="page-container">
       <div className="content-wrap" history={hist}>
-
         <HashRouter >
             <Route path="/home" component={DashboardPage} />
             <Route exact path="/" component={Login} />
