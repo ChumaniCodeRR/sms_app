@@ -1,8 +1,8 @@
-import React from 'react';
-import Paper from '@material-ui/core/Paper';
-import { makeStyles } from '@material-ui/core/styles';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
+import React from "react";
+import Paper from "@material-ui/core/Paper";
+import { makeStyles } from "@material-ui/core/styles";
+import Tabs from "@material-ui/core/Tabs";
+import Tab from "@material-ui/core/Tab";
 import HomeIcon from "@material-ui/icons/Home";
 import AccountBalanceWalletIcon from "@material-ui/icons/AccountBalanceWallet";
 import ContactsIcon from "@material-ui/icons/Contacts";
@@ -10,15 +10,14 @@ import EmailIcon from "@material-ui/icons/Email";
 import SmsIcon from "@material-ui/icons/Sms";
 import SettingsIcon from "@material-ui/icons/Settings";
 import GroupIcon from "@material-ui/icons/Group";
-import { Link } from "react-router-dom";
-import Button from '@material-ui/core/Button';
-import Menu from '@material-ui/core/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
-import './theme.css'
+import { Link ,NavLink} from "react-router-dom";
+import Button from "@material-ui/core/Button";
+import Menu from "@material-ui/core/Menu";
+import MenuItem from "@material-ui/core/MenuItem";
+import "./theme.css";
 const useStyles = makeStyles({
   root: {
     flexGrow: 1,
-    
   },
 });
 
@@ -36,7 +35,6 @@ export default function IconLabelTabs() {
     setAnchorEl(null);
   };
 
-
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
@@ -51,13 +49,18 @@ export default function IconLabelTabs() {
         textColor="secondary"
         aria-label="icon label tabs example"
       >
-        <Link to="home" style={{ width: "100%" }}>
+        <NavLink to="home" activeClassName="selected" style={{ width: "100%" }}>
           <Tab label="Dashboard" icon={<HomeIcon />} />
-        </Link>
+        </NavLink>
         <Link to="sms-page" style={{ width: "100%" }}>
           <Tab label="Quick SMS" icon={<SmsIcon />} />
         </Link>
-        <Link aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick} style={{ width: "100%" }}>
+        <Link
+          aria-controls="simple-menu"
+          aria-haspopup="true"
+          onClick={handleClick}
+          style={{ width: "100%" }}
+        >
           <Tab label="Users" icon={<GroupIcon />} />
         </Link>
         <Menu
@@ -68,12 +71,10 @@ export default function IconLabelTabs() {
           onClose={handleClose}
         >
           <MenuItem onClick={handleClose}>
-            <Link to="super-admin">
-            Super Admin
-            </Link>
+            <Link to="super-admin">Super Admin</Link>
           </MenuItem>
           <MenuItem onClick={handleClose}>
-           <Link to="admin">Admin</Link> 
+            <Link to="admin">Admin</Link>
           </MenuItem>
           <MenuItem onClick={handleClose}>
             <Link to="manager">Manager</Link>
@@ -88,6 +89,7 @@ export default function IconLabelTabs() {
         <Link to="campaigns" style={{ width: "100%" }}>
           <Tab label="Campaings" icon={<EmailIcon />} />
         </Link>
+        
         <Link to="integration" style={{ width: "100%" }}>
           <Tab label="Integration" icon={<SettingsIcon />} />
         </Link>
@@ -95,3 +97,4 @@ export default function IconLabelTabs() {
     </Paper>
   );
 }
+

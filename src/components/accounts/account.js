@@ -8,7 +8,6 @@ import { Link } from "react-router-dom";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
-import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
 import TablePagination from "@material-ui/core/TablePagination";
 import TableRow from "@material-ui/core/TableRow";
@@ -16,12 +15,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAccounts } from "../../actions/accounts.actions";
 import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
 import IconButton from "@material-ui/core/IconButton";
-import Menu from '@material-ui/core/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
+import Menu from "@material-ui/core/Menu";
+import MenuItem from "@material-ui/core/MenuItem";
+import Deposit from "./modal/deposit";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
+    width: "100%",
   },
   paper: {
     padding: theme.spacing(2),
@@ -42,9 +43,6 @@ export default function AccountPage() {
     setAnchorEl(null);
   };
 
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
   //paginatins initial state
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
@@ -61,6 +59,10 @@ export default function AccountPage() {
     setRowsPerPage(+event.target.value);
     setPage(0);
   };
+
+  // deposit modal controlls
+  const [showModal, updateShowModal] = React.useState(false);
+  const toggleModal = () => updateShowModal((state) => !state);
 
   return (
     <div>
@@ -116,16 +118,21 @@ export default function AccountPage() {
                           onClose={handleClose}
                         >
                           <MenuItem onClick={handleClose}>
-                          <Link to="edit-account">Edit</Link>
+                            <Link to="edit-account">Edit</Link>
                           </MenuItem>
                           <MenuItem onClick={handleClose}>
-                            <Link to="">Deposit</Link>
+                            <span onClick={toggleModal}>Deposit</span>
+                            <Deposit
+                              open={showModal}
+                              handleClickOpen={toggleModal}
+                            />
                           </MenuItem>
                           <MenuItem onClick={handleClose}>
-                          <Link to="account-history">Deposit History</Link>
+                            <Link to="account-history">Deposit History</Link>
                           </MenuItem>
+                          <MenuItem onClick={handleClose}>Delete</MenuItem>
+                          <MenuItem onClick={handleClose}>Download</MenuItem>
                         </Menu>
-    
                       </TableCell>
                     </TableRow>
                   ))}

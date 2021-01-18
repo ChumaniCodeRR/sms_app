@@ -37,7 +37,7 @@ export default function Integration() {
         <Card className={classes.root} variant="outlined">
           <CardContent>
         
-            <Typography variant="h5" component="h2">
+            <Typography variant="h5" component="h5">
               API Token
             </Typography>
             <Typography className={classes.pos} color="textSecondary">

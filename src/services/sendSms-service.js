@@ -10,11 +10,8 @@ function sendSms(data){
     const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({data})
+        body: data
     };
 
-    return axios.post(`/send-quick`, requestOptions)
-        .then(user => {
-            return user;
-        });
+    return axios.post(`/send-quick`, requestOptions);
 }

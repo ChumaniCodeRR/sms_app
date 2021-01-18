@@ -8,8 +8,8 @@ export default function FooterPage() {
       {new Date().getFullYear()}
         {"."}
         {"Copyright © "}Welcome to Vetro Media SMS App. All rights reserved |
-        Design by
-        <Link color="inherit" href="https://www.vetro.co.za/">
+        Design by &nbsp;
+        <Link color="primary" href="https://www.vetro.co.za/">
           www.vetro.co.za
         </Link>{" "}
     </div>

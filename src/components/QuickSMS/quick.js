@@ -7,6 +7,7 @@ import { sendQuickSms } from "../../actions/quick-sms.actions";
 import { useDispatch } from "react-redux";
 import Button from "@material-ui/core/Button";
 import Icon from "@material-ui/core/Icon";
+import { useForm } from "react-hook-form";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -19,7 +20,11 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function SmsPage() {
+   //error handers 
+ const { register, handleSubmit, errors } = useForm();
+
   const classes = useStyles();
+  //initial state
   const [sendSms, setsendSms] = useState({
     phoneNumber: "",
     account: "",
@@ -33,8 +38,7 @@ export default function SmsPage() {
     setsendSms((sendSms) => ({ ...sendSms, [name]: value }));
   }
 
-  function onSubmit(e) {
-    e.preventDefault();
+  function onSubmit() { 
     console.log(sendSms);
     dispatch(sendQuickSms(sendSms));
   }
@@ -46,8 +50,8 @@ export default function SmsPage() {
         <br />
         <Grid item xs={12}>
           <Paper className={classes.paper}>
-            <h5>Send Quick SMS</h5>
-            <form onSubmit={onSubmit}>
+            <h5>SEND QUICK SMS</h5>
+            <form onSubmit={handleSubmit(onSubmit)}>
               <div className="form-group">
                 <label>Mobile Number</label>
                 <input
@@ -55,8 +59,11 @@ export default function SmsPage() {
                   name="phoneNumber"
                   value={phoneNumber}
                   onChange={onChange}
+                  ref={register({ required: true })}
                 />
+                {errors.phoneNumber && <span class="text-danger">This field is required</span>}
               </div>
+              
               <div className="form-group">
                 <label>Select account to send from</label>
                 <select
@@ -80,9 +87,12 @@ export default function SmsPage() {
                   name="message"
                   value={message}
                   onChange={onChange}
+                  ref={register({ required: true })}
                 ></textarea>
+                {errors.message && <span class="text-danger">This field is required</span>}
               </div>
               <Button
+                 type="submit"
                 variant="contained"
                 color="primary"
                 className={classes.button}

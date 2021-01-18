@@ -71,7 +71,10 @@ export default function ViewContactPage() {
             </h5>
               </div>
               <div class="col">
+              <Link to="contact-list">
               <button type="button" class="btn btn-outline-secondary float-right mb-2">back</button>
+              </Link>
+              
               </div>
             </div>
 

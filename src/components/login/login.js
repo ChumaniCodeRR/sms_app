@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState ,useRef} from "react";
 import "./login.css";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -12,10 +12,13 @@ import CardActions from "@material-ui/core/CardActions";
 import logo from "../../assets/Logo.png";
 import { useDispatch } from 'react-redux';
 import {login} from '../../actions/authentication.actions';
+import { useForm } from "react-hook-form";
 
 
 export default function Login(props) {
 
+  //error handers 
+  const { register, handleSubmit, errors } = useForm();
 //initial state
   const [loginCredentials, setloginCredentials] = useState({
     email: "",
@@ -31,7 +34,7 @@ export default function Login(props) {
   }
 
   function onSubmit(e) {
-    e.preventDefault()
+     
     props.history.push('/home')
     dispatch(login(loginCredentials))
   }
@@ -49,12 +52,12 @@ export default function Login(props) {
               <Typography component="h1" variant="h5">
                 Administrator Login 
               </Typography>
-              <form className="form" noValidate onSubmit={onSubmit}> 
+              <form className="form"  onSubmit={handleSubmit(onSubmit)}> 
                 <TextField
+                  inputRef={register({ required: true })}
                   className="inputColor"
                   variant="outlined"
                   margin="normal"
-                  required
                   fullWidth
                   id="email"
                   label="Email Address"
@@ -63,11 +66,12 @@ export default function Login(props) {
                   onChange={onChange}
                   autoComplete="email"
                 />
+                {errors.password && <span class="text-danger">This field is required</span>}
                 <TextField
+                  inputRef={register({ required: true })}
                   className="inputColor"
                   variant="outlined"
                   margin="normal"
-                  required
                   fullWidth
                   name="password"
                   value={password}
@@ -77,6 +81,7 @@ export default function Login(props) {
                   id="password"
                   autoComplete="current-password"
                 />
+                {errors.password && <span class="text-danger mb-2">This field is required</span>}
                 <Button
                   type="submit"
                   fullWidth
@@ -96,15 +101,7 @@ export default function Login(props) {
           </Card>
         </div>
       </Container>
-      <Typography variant="body2" color="textSecondary" align="center">
-        {new Date().getFullYear()}
-        {"."}
-        {"Copyright © "}Welcome to Vetro Media SMS App. All rights reserved |
-        Design by
-        <Link color="inherit" href="https://www.vetro.co.za/">
-          www.vetro.co.za
-        </Link>{" "}
-      </Typography>
+  
     </div>
   );
 }

@@ -17,7 +17,7 @@ export const getSmsOverview = () => {
   }
   
   function success(sms) {
-    return { type: GET_SMS_SUCCESS,sms};
+    return { type: GET_SMS_SUCCESS,payload:sms};
   }
   function failure(error) {
     return { type: GET_SMS_FAILURE, error };
